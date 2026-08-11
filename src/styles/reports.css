@@ -1,0 +1,601 @@
+/* =============================================
+   REPORTS & ANALYTICS PAGE STYLES
+   Container: .reports-page-container
+   ============================================= */
+
+.reports-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #111827;
+  padding-bottom: 24px;
+}
+
+/* ─── Header ─── */
+.rp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.rp-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.rp-header p {
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 3px;
+}
+
+.rp-header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.rp-dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.rp-dropdown-btn:hover {
+  background: #f9fafb;
+  border-color: #fdba74;
+}
+
+.rp-dropdown-btn:focus {
+  outline: none;
+  border-color: #f97316;
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.15);
+}
+
+.rp-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.rp-btn-outline:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+/* ─── Compact KPI Row ─── */
+.rp-kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.rp-stat-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 14px;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+
+.rp-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+}
+
+/* Featured card styling for 4th card */
+.rp-stat-card.featured {
+  border: 1.5px solid #374151;
+}
+
+.rp-stat-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.rp-stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6b7280;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.rp-stat-icon-wrap {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffedd5;
+  color: #c2410c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.rp-stat-icon-wrap.green-tint {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.rp-stat-icon-wrap.dark-tint {
+  background: #381c0f;
+  color: white;
+}
+
+.rp-stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.1;
+  margin-bottom: 3px;
+}
+
+.rp-stat-bottom {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+}
+
+.rp-trend-green {
+  color: #16a34a;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.rp-stat-target {
+  color: #6b7280;
+}
+
+/* ─── Grid Systems ─── */
+.rp-grid-65-35 {
+  display: grid;
+  grid-template-columns: 65fr 35fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.rp-grid-60-40 {
+  display: grid;
+  grid-template-columns: 60fr 40fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* ─── Card Common Styles ─── */
+.rp-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rp-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.rp-card-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.rp-view-all-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: #ea580c;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.rp-view-all-link:hover {
+  text-decoration: underline;
+}
+
+/* ─── Monthly Placement Trend (Pure CSS Bar Chart) ─── */
+.rp-chart-canvas {
+  background: #fbf7ee;
+  border-radius: 6px;
+  padding: 24px 20px 14px;
+  min-height: 180px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex: 1;
+}
+
+.rp-bar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  justify-content: flex-end;
+  flex: 1;
+  max-width: 54px;
+}
+
+.rp-bar-col-top {
+  font-size: 10px;
+  color: #6b7280;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.rp-bar {
+  width: 38px;
+  border-radius: 3px 3px 0 0;
+  transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rp-bar.jan {
+  height: 22px;
+  background: #fde7cc;
+}
+
+.rp-bar.feb {
+  height: 48px;
+  background: #fbc182;
+}
+
+.rp-bar.mar {
+  height: 82px;
+  background: #f97316;
+}
+
+.rp-bar.apr {
+  height: 124px;
+  background: #ea580c;
+}
+
+.rp-bar.may {
+  height: 148px;
+  background: #381c0f;
+}
+
+.rp-bar.jun {
+  height: 94px;
+  background: #78716c;
+}
+
+/* ─── Hiring Distribution (Pure CSS Conic Gradient Doughnut Chart) ─── */
+.rp-doughnut-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  flex: 1;
+}
+
+.rp-doughnut {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #381c0f 0% 55%,
+    #ea580c 55% 80%,
+    #e5e7eb 80% 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.rp-doughnut-hole {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.rp-doughnut-total {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1;
+}
+
+.rp-doughnut-sub {
+  font-size: 9px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+
+.rp-legend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  margin-top: 14px;
+  padding: 0 10px;
+}
+
+.rp-legend-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.rp-legend-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.rp-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.rp-legend-dot.tech {
+  background: #381c0f;
+}
+
+.rp-legend-dot.finance {
+  background: #ea580c;
+}
+
+.rp-legend-dot.consulting {
+  background: #e5e7eb;
+}
+
+.rp-legend-pct {
+  font-weight: 600;
+  color: #111827;
+}
+
+/* ─── Placement Performance Table ─── */
+.rp-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.rp-table th {
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fafafa;
+  text-transform: uppercase;
+}
+
+.rp-table td {
+  padding: 10px 12px;
+  font-size: 12px;
+  color: #111827;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+}
+
+.rp-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.rp-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.rp-rate-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.rp-rate-badge.green {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.rp-rate-badge.amber {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* ─── Department Analytics Progress Bars ─── */
+.rp-dept-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rp-dept-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rp-dept-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.rp-dept-name {
+  font-weight: 600;
+  color: #111827;
+}
+
+.rp-dept-stat {
+  color: #6b7280;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.rp-dept-track {
+  width: 100%;
+  height: 6px;
+  background: #f3f4f6;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.rp-dept-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+.rp-dept-fill.dark-brown {
+  background: #381c0f;
+}
+
+.rp-dept-fill.orange {
+  background: #ea580c;
+}
+
+/* ─── Recent Reports Generated ─── */
+.rp-reports-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rp-report-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+}
+
+.rp-report-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.rp-report-icon-box.pdf {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.rp-report-icon-box.excel {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.rp-report-info h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.rp-report-info p {
+  font-size: 11px;
+  color: #9ca3af;
+  margin: 2px 0 0 0;
+}
+
+/* ─── Quick Actions ─── */
+.rp-quick-actions-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  flex: 1;
+}
+
+.rp-btn-action-primary {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 0;
+  background: #78350f;
+  border: 1px solid #78350f;
+  color: white;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.rp-btn-action-primary:hover {
+  background: #92400e;
+  border-color: #92400e;
+}
+
+.rp-btn-action-outline {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 0;
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.rp-btn-action-outline:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}

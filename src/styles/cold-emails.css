@@ -1,0 +1,786 @@
+/* =============================================
+   COLD EMAIL MANAGEMENT PAGE – Isolated Styles
+   Container: .cold-email-container
+   ============================================= */
+
+.cold-email-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-bottom: 80px;
+}
+
+/* ─── Header ─── */
+.ce-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.ce-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.ce-header p {
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.ce-header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.ce-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.ce-btn-outline {
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+.ce-btn-outline:hover {
+  background: #f9fafb;
+  border-color: #bbb;
+}
+
+.ce-btn-primary {
+  background: #78350f;
+  border: 1px solid #78350f;
+  color: white;
+}
+
+.ce-btn-primary:hover {
+  background: #92400e;
+  border-color: #92400e;
+}
+
+/* ─── KPI Stat Cards ─── */
+.ce-kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.ce-stat-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ce-stat-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.ce-stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  letter-spacing: 0.2px;
+}
+
+.ce-stat-bg-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 42px;
+  color: #f3f4f6;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ce-stat-bottom {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.ce-stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1;
+}
+
+.ce-stat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.ce-stat-badge.green {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.ce-stat-badge.red {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.ce-stat-badge.orange {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.ce-stat-subtext {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ─── Main Grid ─── */
+.ce-grid {
+  display: grid;
+  grid-template-columns: 65fr 35fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.ce-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ce-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ─── Campaign Table Card ─── */
+.ce-table-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ce-table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.ce-search-wrapper {
+  position: relative;
+  width: 260px;
+}
+
+.ce-search-wrapper .ce-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.ce-search-wrapper input {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 7px 12px 7px 32px;
+  font-size: 13px;
+  color: #111827;
+  background: white;
+  outline: none;
+}
+
+.ce-search-wrapper input::placeholder {
+  color: #9ca3af;
+}
+
+.ce-search-wrapper input:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.1);
+}
+
+.ce-toolbar-btns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ce-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 6px;
+  padding: 7px 12px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.ce-filter-btn:hover {
+  background: #f9fafb;
+}
+
+/* Campaign Table */
+.ce-campaign-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.ce-campaign-table th {
+  padding: 8px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fafafa;
+  text-transform: uppercase;
+}
+
+.ce-campaign-table td {
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #111827;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+}
+
+.ce-campaign-table tbody tr {
+  transition: background 0.15s;
+}
+
+.ce-campaign-table tbody tr:hover {
+  background: #fafafa;
+}
+
+.ce-campaign-name {
+  font-weight: 600;
+  color: #111827;
+  display: block;
+}
+
+.ce-campaign-sub {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+.ce-metrics-open {
+  font-weight: 600;
+  color: #111827;
+}
+
+.ce-metrics-reply {
+  font-weight: 600;
+  color: #ea580c;
+}
+
+.ce-metrics-sep {
+  color: #d1d5db;
+  margin: 0 2px;
+}
+
+/* Status badges */
+.ce-status {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ce-status-active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.ce-status-sending {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.ce-status-completed {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+}
+
+.ce-status-draft {
+  background: #f3f4f6;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+}
+
+.ce-actions-btn {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ce-actions-btn:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+/* Pagination */
+.ce-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.ce-pagination-info {
+  font-size: 12px;
+  color: #f97316;
+  font-weight: 500;
+}
+
+.ce-pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ce-page-btn {
+  min-width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.ce-page-btn:hover {
+  background: #f9fafb;
+}
+
+.ce-page-btn.active {
+  background: #111827;
+  color: white;
+  border-color: #111827;
+}
+
+.ce-page-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ─── Active Campaign Card ─── */
+.ce-active-campaign {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 18px 20px;
+}
+
+.ce-active-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.ce-active-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #dcfce7;
+  color: #166534;
+  margin-bottom: 6px;
+}
+
+.ce-active-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.ce-edit-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.ce-edit-btn:hover {
+  background: #f9fafb;
+  color: #111827;
+}
+
+/* Progress bar */
+.ce-progress-section {
+  margin-bottom: 16px;
+}
+
+.ce-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.ce-progress-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #f97316;
+}
+
+.ce-progress-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.ce-progress-track {
+  width: 100%;
+  height: 6px;
+  background: #f3f4f6;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.ce-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f97316, #ea580c);
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+/* Campaign details list */
+.ce-detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.ce-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.ce-detail-icon {
+  color: #9ca3af;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.ce-detail-label {
+  color: #6b7280;
+  min-width: 100px;
+}
+
+.ce-detail-value {
+  color: #111827;
+  font-weight: 500;
+  margin-left: auto;
+  text-align: right;
+}
+
+.ce-detail-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fef0e6;
+  color: #c2410c;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.ce-pause-btn {
+  width: 100%;
+  padding: 8px 0;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+
+.ce-pause-btn:hover {
+  background: #f9fafb;
+  border-color: #bbb;
+}
+
+/* ─── Required Actions Card ─── */
+.ce-required-actions {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+
+.ce-required-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.ce-required-header span {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.ce-alert-box {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.ce-alert-icon {
+  color: #dc2626;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.ce-alert-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #991b1b;
+  display: block;
+}
+
+.ce-alert-desc {
+  font-size: 12px;
+  color: #b91c1c;
+  margin-top: 2px;
+  display: block;
+}
+
+/* ─── Recent Activity Stream ─── */
+.ce-activity-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 18px 20px;
+}
+
+.ce-activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.ce-activity-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.ce-view-all {
+  font-size: 13px;
+  font-weight: 500;
+  color: #f97316;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.ce-view-all:hover {
+  text-decoration: underline;
+}
+
+.ce-timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.ce-timeline-item {
+  display: flex;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.ce-timeline-item:last-child {
+  border-bottom: none;
+}
+
+.ce-timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.ce-timeline-dot.green {
+  background: #22c55e;
+}
+
+.ce-timeline-dot.orange {
+  background: #f97316;
+}
+
+.ce-timeline-dot.gray {
+  background: #9ca3af;
+}
+
+.ce-timeline-content {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ce-timeline-body {
+  flex: 1;
+}
+
+.ce-timeline-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 3px 0;
+}
+
+.ce-timeline-title .ce-link {
+  color: #ea580c;
+  font-weight: 600;
+}
+
+.ce-timeline-sub {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.ce-timeline-quote {
+  font-size: 12px;
+  color: #6b7280;
+  font-style: italic;
+  margin: 4px 0 0 0;
+  padding-left: 10px;
+  border-left: 2px solid #e5e7eb;
+}
+
+.ce-timeline-time {
+  font-size: 12px;
+  color: #9ca3af;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─── Floating Action Bar ─── */
+.ce-floating-bar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(calc(-50% + 94px));
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #1f2937;
+  border-radius: 999px;
+  padding: 6px 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 200;
+}
+
+.ce-float-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: #e5e7eb;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.ce-float-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.ce-float-btn .ce-float-icon {
+  display: flex;
+  align-items: center;
+}

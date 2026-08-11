@@ -1,0 +1,706 @@
+/* =============================================
+   PLACEMENT DRIVES PAGE – Isolated Styles
+   Container: .placement-drives-container
+   ============================================= */
+
+.placement-drives-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ─── Header ─── */
+.pd-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.pd-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.pd-header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.pd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.pd-btn-outline {
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+.pd-btn-outline:hover {
+  background: #f9fafb;
+  border-color: #bbb;
+}
+
+.pd-btn-primary {
+  background: #78350f;
+  border: 1px solid #78350f;
+  color: white;
+}
+
+.pd-btn-primary:hover {
+  background: #92400e;
+  border-color: #92400e;
+}
+
+/* ─── KPI Row ─── */
+.pd-kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.pd-stat-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pd-stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  letter-spacing: 0.2px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pd-stat-label-icon {
+  color: #d1d5db;
+  display: flex;
+  align-items: center;
+}
+
+.pd-stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1;
+}
+
+/* ─── Main Grid ─── */
+.pd-grid {
+  display: grid;
+  grid-template-columns: 65fr 35fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.pd-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pd-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ─── Table Card ─── */
+.pd-table-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Toolbar */
+.pd-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  gap: 10px;
+}
+
+.pd-search-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 320px;
+}
+
+.pd-search-wrapper .pd-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.pd-search-wrapper input {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 7px 12px 7px 32px;
+  font-size: 13px;
+  color: #111827;
+  background: white;
+  outline: none;
+}
+
+.pd-search-wrapper input::placeholder {
+  color: #9ca3af;
+}
+
+.pd-search-wrapper input:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.1);
+}
+
+.pd-toolbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pd-dropdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 6px;
+  padding: 7px 12px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.pd-dropdown:hover {
+  background: #f9fafb;
+}
+
+.pd-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 6px;
+  padding: 7px 10px;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.pd-icon-btn:hover {
+  background: #f9fafb;
+}
+
+/* Table */
+.pd-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.pd-table th {
+  padding: 8px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fafafa;
+  text-transform: uppercase;
+}
+
+.pd-table td {
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #111827;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+}
+
+.pd-table tbody tr {
+  transition: background 0.18s ease;
+}
+
+.pd-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.pd-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Company cell */
+.pd-company-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pd-company-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 11px;
+  color: #6b7280;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+
+.pd-company-name {
+  font-weight: 600;
+  color: #111827;
+}
+
+.pd-campus-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  background: #fef0e6;
+  color: #c2410c;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+/* Department pill badges */
+.pd-dept-pills {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.pd-dept-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #f3f4f6;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.pd-dept-pill.cse {
+  background: #fef0e6;
+  color: #c2410c;
+}
+
+.pd-dept-pill.ise {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.pd-dept-pill.ece {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.pd-dept-pill.me {
+  background: #f3e8ff;
+  color: #7c3aed;
+}
+
+.pd-dept-pill.all {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+
+/* Status badges */
+.pd-status {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.pd-status-upcoming {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.pd-status-ongoing {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.pd-status-completed {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+}
+
+/* Actions button */
+.pd-actions-btn {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pd-actions-btn:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+/* ─── Drive Detail Card ─── */
+.pd-detail-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 18px 20px;
+}
+
+.pd-detail-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.pd-detail-company-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pd-detail-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.pd-detail-company-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.pd-upcoming-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: #fff7ed;
+  color: #c2410c;
+  border: 1px solid #fed7aa;
+}
+
+.pd-detail-sub {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 16px 0;
+}
+
+.pd-detail-campus-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.pd-detail-role {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Detail grid */
+.pd-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.pd-info-item label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 3px;
+}
+
+.pd-info-item span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.pd-info-item span.pd-danger {
+  color: #dc2626;
+}
+
+/* Progress bar */
+.pd-applicants-section {
+  margin-bottom: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.pd-applicants-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.pd-applicants-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.pd-applicants-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.pd-progress-track {
+  width: 100%;
+  height: 6px;
+  background: #f3f4f6;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.pd-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f97316, #ea580c);
+  border-radius: 999px;
+  width: 0%;
+  animation: pd-progress-slide 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+
+@keyframes pd-progress-slide {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--pd-progress-target, 68%);
+  }
+}
+
+/* Action buttons */
+.pd-detail-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pd-publish-btn {
+  width: 100%;
+  padding: 9px 0;
+  border: none;
+  background: #78350f;
+  color: white;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.15s;
+}
+
+.pd-publish-btn:hover {
+  background: #92400e;
+}
+
+.pd-detail-btn-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.pd-outline-action {
+  padding: 8px 0;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+
+.pd-outline-action:hover {
+  background: #f9fafb;
+  border-color: #bbb;
+}
+
+/* ─── Upcoming Schedule Card ─── */
+.pd-schedule-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 18px 20px;
+}
+
+.pd-schedule-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.pd-schedule-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.pd-schedule-header-icon {
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+}
+
+/* Timeline stepper */
+.pd-timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.pd-timeline-step {
+  display: flex;
+  gap: 14px;
+  position: relative;
+}
+
+.pd-timeline-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 14px;
+}
+
+.pd-timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f97316;
+  flex-shrink: 0;
+  margin-top: 3px;
+  z-index: 1;
+}
+
+.pd-timeline-dot.completed {
+  background: #f97316;
+}
+
+.pd-timeline-dot.future {
+  background: #d1d5db;
+}
+
+.pd-timeline-line {
+  width: 2px;
+  flex: 1;
+  background: #e5e7eb;
+  min-height: 16px;
+}
+
+.pd-timeline-content {
+  flex: 1;
+  padding-bottom: 16px;
+}
+
+.pd-timeline-step:last-child .pd-timeline-content {
+  padding-bottom: 0;
+}
+
+.pd-timeline-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 2px 0;
+}
+
+.pd-timeline-meta {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ─── Selected row highlight ─── */
+.pd-table tbody tr.pd-selected {
+  background: #fffbf5;
+  border-left: 3px solid #f97316;
+}
+
+.pd-table tbody tr.pd-selected td:first-child {
+  padding-left: 13px;
+}

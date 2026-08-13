@@ -2,7 +2,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "../pages/auth/Login";
 import AdminDashboard from "../pages/admin/Dashboard";
-import StudentDashboard from "../pages/student/Dashboard";
 import Companies from "../pages/admin/Companies";
 import CRM from "../pages/admin/CRM";
 import ColdEmails from "../pages/admin/ColdEmails";
@@ -14,6 +13,14 @@ import Reports from "../pages/admin/Reports";
 import Settings from "../pages/admin/Settings";
 
 import AdminLayout from "../layouts/AdminLayout";
+import StudentLayout from "../components/layout/StudentLayout";
+import StudentDashboard from "../components/layout/StudentDashboard";
+import AvailableDrives from "../pages/student/AvailableDrives";
+import MyApplications from "../pages/student/MyApplications";
+import StudentInterviewQueue from "../pages/student/InterviewQueue";
+import MockInterviews from "../pages/student/MockInterviews";
+import StudentPlacementResults from "../pages/student/Results";
+import StudentSettings from "../pages/student/Settings";
 
 export default function AppRouter() {
   return (
@@ -76,11 +83,39 @@ export default function AppRouter() {
 
       </Route>
 
-      <Route
-        path="/student/dashboard"
-        element={<StudentDashboard />}
-      />
+      <Route element={<StudentLayout />}>
+        <Route
+          path="/student/dashboard"
+          element={<StudentDashboard />}
+        />
+        <Route
+          path="/student/drives"
+          element={<AvailableDrives />}
+        />
+        <Route
+          path="/student/applications"
+          element={<MyApplications />}
+        />
+        <Route
+          path="/student/mock-interviews"
+          element={<MockInterviews />}
+        />
+        <Route
+          path="/student/interviews"
+          element={<StudentInterviewQueue />}
+        />
+        <Route
+          path="/student/results"
+          element={<StudentPlacementResults />}
+        />
+        <Route
+          path="/student/settings"
+          element={<StudentSettings />}
+        />
+      </Route>
 
     </Routes>
   );
 }
+
+

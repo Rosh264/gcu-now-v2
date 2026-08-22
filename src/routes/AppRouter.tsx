@@ -23,6 +23,7 @@ import StudentPlacementResults from "../pages/student/Results";
 import StudentSettings from "../pages/student/Settings";
 import CompanyDashboard from "../pages/company/CompanyDashboard";
 import CompanyPlacementDrives from "../pages/company/PlacementDrives";
+import CompanyCandidates from "../pages/company/Candidates";
 
 export default function AppRouter() {
   return (
@@ -121,7 +122,7 @@ export default function AppRouter() {
       <Route path="/company/dashboard" element={<CompanyDashboard />} />
       <Route path="/company/drives" element={<CompanyPlacementDrives />} />
       <Route path="/company/placement-drives" element={<Navigate to="/company/drives" replace />} />
-      <Route path="/company/candidates" element={<CompanyDashboard />} />
+      <Route path="/company/candidates" element={<CompanyCandidates />} />
       <Route path="/company/interviews" element={<CompanyDashboard />} />
       <Route path="/company/profile" element={<CompanyDashboard />} />
     </Routes>

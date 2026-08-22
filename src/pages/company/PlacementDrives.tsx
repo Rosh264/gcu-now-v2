@@ -105,17 +105,28 @@ const DRIVES: Drive[] = [
 /* --- Status badge helper ------------------------------------------------ */
 function StatusBadge({ status }: { status: Drive["status"] }) {
   const map: Record<Drive["status"], { bg: string; text: string; dot: string }> = {
-    ACTIVE: { bg: "bg-emerald-50", text: "text-emerald-700", dot: "bg-emerald-500" },
-    "PENDING APPROVAL": { bg: "bg-orange-50", text: "text-orange-700", dot: "bg-orange-500" },
-    COMPLETED: { bg: "bg-slate-100", text: "text-slate-600", dot: "bg-slate-400" },
-    UPCOMING: { bg: "bg-sky-50", text: "text-sky-700", dot: "bg-sky-500" },
+    ACTIVE: { bg: "#ecfdf5", text: "#047857", dot: "#10b981" },
+    "PENDING APPROVAL": { bg: "#fff7ed", text: "#c2410c", dot: "#f97316" },
+    COMPLETED: { bg: "#f1f5f9", text: "#475569", dot: "#94a3b8" },
+    UPCOMING: { bg: "#f0f9ff", text: "#0369a1", dot: "#0ea5e9" },
   };
   const s = map[status];
   return (
     <span
-      className={`${s.bg} ${s.text} inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] font-bold tracking-wide`}
+      style={{
+        background: s.bg,
+        color: s.text,
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "6px",
+        borderRadius: "9999px",
+        padding: "2px 10px",
+        fontSize: "10px",
+        fontWeight: 700,
+        letterSpacing: "0.025em"
+      }}
     >
-      <span className={`${s.dot} inline-block h-1.5 w-1.5 rounded-full`} />
+      <span style={{ background: s.dot, display: "inline-block", height: "6px", width: "6px", borderRadius: "9999px" }} />
       {status}
     </span>
   );
@@ -142,27 +153,66 @@ function QuickActionMenu({ driveId }: { driveId: number }) {
   ];
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} style={{ position: "relative" }}>
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
+        style={{
+          display: "flex",
+          height: "32px",
+          width: "32px",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: "8px",
+          color: "#9ca3af",
+          background: "transparent",
+          border: "none",
+          cursor: "pointer",
+          transition: "all 0.15s ease"
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.background = "#f1f5f9"; e.currentTarget.style.color = "#475569"; }}
+        onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#9ca3af"; }}
         aria-label={`Quick actions for drive ${driveId}`}
       >
         <FiMoreVertical size={18} />
       </button>
 
       {open && (
-        <div className="absolute right-0 top-9 z-30 w-44 overflow-hidden rounded-xl border border-slate-200 bg-white py-1 shadow-lg">
+        <div style={{
+          position: "absolute",
+          right: 0,
+          top: "36px",
+          zIndex: 30,
+          width: "176px",
+          overflow: "hidden",
+          borderRadius: "12px",
+          border: "1px solid #e5e7eb",
+          background: "white",
+          padding: "4px 0",
+          boxShadow: "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)"
+        }}>
           {items.map((item) => (
             <button
               key={item.label}
               type="button"
               onClick={() => setOpen(false)}
-              className={`flex w-full items-center gap-2.5 px-4 py-2 text-left text-[13px] font-medium transition-colors ${item.danger
-                  ? "text-red-600 hover:bg-red-50"
-                  : "text-slate-700 hover:bg-slate-50"
-                }`}
+              style={{
+                display: "flex",
+                width: "100%",
+                alignItems: "center",
+                gap: "10px",
+                padding: "8px 16px",
+                textAlign: "left",
+                fontSize: "13px",
+                fontWeight: 500,
+                transition: "all 0.15s ease",
+                border: "none",
+                background: "transparent",
+                cursor: "pointer",
+                color: item.danger ? "#dc2626" : "#374151"
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = item.danger ? "#fef2f2" : "#f8fafc"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
             >
               {item.icon}
               {item.label}
@@ -206,25 +256,25 @@ export default function CompanyPlacementDrives() {
       label: "ACTIVE DRIVES",
       value: DRIVES.filter((d) => d.status === "ACTIVE").length,
       icon: <FiTrendingUp size={18} />,
-      accent: "text-orange-500",
+      accent: "#f97316",
     },
     {
       label: "UPCOMING",
       value: DRIVES.filter((d) => d.status === "UPCOMING").length,
       icon: <FiClock size={18} />,
-      accent: "text-amber-500",
+      accent: "#f59e0b",
     },
     {
       label: "COMPLETED",
       value: DRIVES.filter((d) => d.status === "COMPLETED").length,
       icon: <FiCheckCircle size={18} />,
-      accent: "text-emerald-500",
+      accent: "#10b981",
     },
     {
       label: "TOTAL HIRES",
       value: DRIVES.reduce((sum, d) => sum + d.interviews, 0),
       icon: <FiUsers size={18} />,
-      accent: "text-sky-500",
+      accent: "#0ea5e9",
     },
   ];
 
@@ -245,7 +295,7 @@ export default function CompanyPlacementDrives() {
             {navItems.map((item) => {
               const isActive = location.pathname === item.path;
               return (
-                <button key={item.name} type="button" onClick={() => navigate(item.path)} style={{ display: "flex", alignItems: "center", gap: "12px", width: "100%", padding: "10px 14px", borderRadius: "8px", fontSize: "13px", fontWeight: isActive ? 700 : 500, color: isActive ? "white" : "#4b5563", background: isActive ? "#381c0f" : "transparent", border: "none", cursor: "pointer", transition: "all 0.15s ease", textAlign: "left" }} className={!isActive ? "hover:bg-orange-50/50 hover:text-orange-900" : ""}>
+                <button key={item.name} type="button" onClick={() => navigate(item.path)} style={{ display: "flex", alignItems: "center", gap: "12px", width: "100%", padding: "10px 14px", borderRadius: "8px", fontSize: "13px", fontWeight: isActive ? 700 : 500, color: isActive ? "white" : "#4b5563", background: isActive ? "#381c0f" : "transparent", border: "none", cursor: "pointer", transition: "all 0.15s ease", textAlign: "left" }} onMouseEnter={(e) => { if(!isActive) { e.currentTarget.style.background = "rgba(255, 237, 213, 0.5)"; e.currentTarget.style.color = "#7c2d12"; } }} onMouseLeave={(e) => { if(!isActive) { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#4b5563"; } }}>
                   <span style={{ color: isActive ? "#ea580c" : "#9ca3af" }}>{item.icon}</span>
                   <span>{item.name}</span>
                 </button>
@@ -254,103 +304,157 @@ export default function CompanyPlacementDrives() {
           </nav>
         </div>
         <div style={{ padding: "16px 12px", borderTop: "1px solid #f3f4f6" }}>
-          <button type="button" onClick={() => navigate("/company/profile")} style={{ display: "flex", alignItems: "center", gap: "12px", width: "100%", padding: "10px 14px", borderRadius: "8px", fontSize: "13px", fontWeight: location.pathname === "/company/profile" ? 700 : 500, color: location.pathname === "/company/profile" ? "white" : "#4b5563", background: location.pathname === "/company/profile" ? "#381c0f" : "transparent", border: "none", cursor: "pointer", transition: "all 0.15s ease", textAlign: "left" }} className={location.pathname !== "/company/profile" ? "hover:bg-orange-50/50 hover:text-orange-900" : ""}>
+          <button type="button" onClick={() => navigate("/company/profile")} style={{ display: "flex", alignItems: "center", gap: "12px", width: "100%", padding: "10px 14px", borderRadius: "8px", fontSize: "13px", fontWeight: location.pathname === "/company/profile" ? 700 : 500, color: location.pathname === "/company/profile" ? "white" : "#4b5563", background: location.pathname === "/company/profile" ? "#381c0f" : "transparent", border: "none", cursor: "pointer", transition: "all 0.15s ease", textAlign: "left" }} onMouseEnter={(e) => { if(location.pathname !== "/company/profile") { e.currentTarget.style.background = "rgba(255, 237, 213, 0.5)"; e.currentTarget.style.color = "#7c2d12"; } }} onMouseLeave={(e) => { if(location.pathname !== "/company/profile") { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#4b5563"; } }}>
             <FiLayers size={17} style={{ color: location.pathname === "/company/profile" ? "#ea580c" : "#9ca3af" }} />
             <span>Company Profile</span>
           </button>
         </div>
       </aside>
-      <div style={{ flex: 1, overflowY: "auto" }}>
-        <div className="mx-auto w-full max-w-7xl flex flex-col gap-6 p-8 font-['Inter',system-ui,sans-serif]">
-          {/* Page Header */}
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            {/* Title */}
+      <div style={{ flex: 1, overflowY: "auto", position: "relative" }}>
+        <div style={{ padding: "32px 32px 64px", maxWidth: "1200px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "28px" }}>
+          {/* ═══════ Top Content Header ═══════ */}
+          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
             <div>
-              <h1 className="text-[26px] font-extrabold tracking-tight text-[#381c0f]">
+              <h1 style={{ fontSize: "26px", fontWeight: 800, color: "#381c0f", margin: "0 0 4px", letterSpacing: "-0.5px" }}>
                 Placement Drives
               </h1>
-              <p className="mt-1 text-sm text-slate-500">
+              <p style={{ margin: 0, fontSize: "14px", color: "#6b7280" }}>
                 Create, manage and track your campus recruitment drives.
               </p>
             </div>
 
-            {/* Top-right controls */}
-            <div className="flex items-center gap-4">
-              {/* Notification Bell */}
-              <button
-                type="button"
-                className="relative flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-colors hover:bg-slate-50 hover:text-slate-700"
-                title="Notifications"
-              >
-                <FiBell size={18} />
-                <span className="absolute right-2 top-2 h-2 w-2 rounded-full border-2 border-white bg-orange-500" />
-              </button>
-
-              {/* HR Avatar Pill */}
-              <div
-                className="flex cursor-pointer items-center gap-2.5 rounded-full border border-slate-200 bg-white py-1 pl-1 pr-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
-                title="HR Account"
-              >
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-600 text-xs font-bold text-white">
-                  MS
+            <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "16px", marginRight: "8px" }}>
+                <button
+                  type="button"
+                  style={{ position: "relative", width: "40px", height: "40px", borderRadius: "10px", background: "white", border: "1px solid #e5e7eb", display: "flex", alignItems: "center", justifyContent: "center", color: "#6b7280", cursor: "pointer", transition: "all 0.15s ease", boxShadow: "0 1px 2px rgba(0,0,0,0.04)" }}
+                >
+                  <FiBell size={18} />
+                  <span style={{ position: "absolute", top: "8px", right: "8px", width: "8px", height: "8px", borderRadius: "50%", background: "#ea580c", border: "2px solid white" }} />
+                </button>
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "10px", padding: "4px 12px 4px 4px", borderRadius: "9999px", background: "white", border: "1px solid #e5e7eb", cursor: "pointer", boxShadow: "0 1px 2px rgba(0,0,0,0.04)" }}
+                >
+                  <div style={{ width: "32px", height: "32px", borderRadius: "50%", background: "#ea580c", display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontSize: "12px", fontWeight: 700 }}>
+                    MS
+                  </div>
+                  <span style={{ fontSize: "13px", fontWeight: 700, color: "#1f2937" }}>Microsoft HR</span>
                 </div>
-                <span className="text-[13px] font-bold text-slate-800">Microsoft HR</span>
               </div>
 
-              {/* + Create Placement Drive */}
               <button
                 type="button"
-                className="flex items-center gap-2 rounded-lg bg-orange-600 px-5 py-2.5 text-[13px] font-bold text-white shadow-[0_2px_6px_rgba(234,88,12,0.3)] transition-all hover:bg-orange-700 active:scale-[0.98]"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  background: "#ea580c",
+                  color: "white",
+                  padding: "10px 20px",
+                  borderRadius: "10px",
+                  fontSize: "13px",
+                  fontWeight: 700,
+                  border: "none",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 12px rgba(234, 88, 12, 0.25)",
+                  transition: "all 0.15s ease",
+                }}
               >
-                <FiPlus size={16} strokeWidth={3} />
+                <FiPlus size={16} style={{ strokeWidth: 3 }} />
                 <span>Create Placement Drive</span>
               </button>
             </div>
           </div>
 
-          {/* KPI Row */}
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          {/* ═══════ KPI Row (Compact Stat Cards) ═══════ */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gap: "14px",
+            }}
+          >
             {kpiData.map((kpi) => (
               <div
                 key={kpi.label}
-                className="rounded-xl border border-slate-200 bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.03)] transition-shadow hover:shadow-md"
+                style={{
+                  background: "white",
+                  border: "1px solid #e5e7eb",
+                  borderRadius: "12px",
+                  padding: "18px 20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.02)",
+                }}
               >
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-bold tracking-wide text-slate-500">
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "8px" }}>
+                  <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.5px", color: "#6b7280" }}>
                     {kpi.label}
                   </span>
-                  <span className={kpi.accent}>{kpi.icon}</span>
+                  <span style={{ color: kpi.accent }}>{kpi.icon}</span>
                 </div>
-                <div className="mt-2 text-3xl font-extrabold tracking-tight text-[#381c0f]">
+                <div style={{ fontSize: "28px", fontWeight: 800, color: "#381c0f", letterSpacing: "-0.5px" }}>
                   {kpi.value}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Filter Bar */}
-          <div className="flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white px-5 py-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
+          {/* ═══════ Filter Bar ═══════ */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+              background: "white",
+              border: "1px solid #e5e7eb",
+              borderRadius: "12px",
+              padding: "12px 20px",
+              boxShadow: "0 1px 3px rgba(0,0,0,0.02)",
+            }}
+          >
             {/* Search */}
-            <div className="relative flex-1">
+            <div style={{ position: "relative", flex: 1 }}>
               <FiSearch
                 size={16}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+                style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}
               />
               <input
                 type="text"
                 placeholder="Search role or drive name..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-lg border border-slate-200 bg-slate-50 py-2 pl-9 pr-4 text-[13px] text-slate-700 outline-none transition-colors placeholder:text-slate-400 focus:border-orange-300 focus:bg-white focus:ring-2 focus:ring-orange-100"
+                style={{
+                  width: "100%",
+                  padding: "8px 16px 8px 36px",
+                  fontSize: "13px",
+                  border: "1px solid #e5e7eb",
+                  borderRadius: "8px",
+                  background: "#f8fafc",
+                  outline: "none",
+                  boxSizing: "border-box",
+                }}
               />
             </div>
 
             {/* Status dropdown */}
-            <div className="relative">
+            <div style={{ position: "relative" }}>
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="appearance-none rounded-lg border border-slate-200 bg-white py-2 pl-3 pr-9 text-[13px] font-semibold text-slate-700 outline-none transition-colors hover:border-orange-300 focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
+                style={{
+                  appearance: "none",
+                  padding: "8px 32px 8px 12px",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  color: "#374151",
+                  border: "1px solid #e5e7eb",
+                  borderRadius: "8px",
+                  background: "white",
+                  outline: "none",
+                  cursor: "pointer",
+                }}
               >
                 <option value="All">Status: All</option>
                 <option value="ACTIVE">Active</option>
@@ -360,16 +464,27 @@ export default function CompanyPlacementDrives() {
               </select>
               <FiChevronDown
                 size={14}
-                className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"
+                style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af", pointerEvents: "none" }}
               />
             </div>
 
             {/* Sort dropdown */}
-            <div className="relative">
+            <div style={{ position: "relative" }}>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="appearance-none rounded-lg border border-slate-200 bg-white py-2 pl-3 pr-9 text-[13px] font-semibold text-slate-700 outline-none transition-colors hover:border-orange-300 focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
+                style={{
+                  appearance: "none",
+                  padding: "8px 32px 8px 12px",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  color: "#374151",
+                  border: "1px solid #e5e7eb",
+                  borderRadius: "8px",
+                  background: "white",
+                  outline: "none",
+                  cursor: "pointer",
+                }}
               >
                 <option value="Latest">Sort: Latest</option>
                 <option value="Oldest">Sort: Oldest</option>
@@ -377,77 +492,83 @@ export default function CompanyPlacementDrives() {
               </select>
               <FiChevronDown
                 size={14}
-                className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"
+                style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af", pointerEvents: "none" }}
               />
             </div>
           </div>
 
-          {/* Drive Cards */}
-          <div className="flex flex-col gap-3">
+          {/* ═══════ Drive Cards ═══════ */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             {filteredDrives.map((drive) => (
               <div
                 key={drive.id}
-                className="group flex items-center justify-between rounded-xl border border-slate-200 bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.03)] transition-all hover:shadow-md"
+                style={{
+                  background: "white",
+                  border: "1px solid #e5e7eb",
+                  borderRadius: "12px",
+                  padding: "20px 24px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.02)",
+                  transition: "all 0.2s ease"
+                }}
               >
                 {/* Left: Role info */}
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-wrap items-center gap-2.5">
-                    <h3 className="truncate text-[15px] font-bold text-[#381c0f]">
+                <div style={{ minWidth: 0, flex: 1 }}>
+                  <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "10px" }}>
+                    <h3 style={{ margin: 0, fontSize: "15px", fontWeight: 800, color: "#381c0f", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                       {drive.role}
                     </h3>
                     {drive.company && (
-                      <span className="rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-semibold text-slate-500">
+                      <span style={{ padding: "2px 8px", fontSize: "10px", fontWeight: 700, color: "#6b7280", background: "#f8fafc", border: "1px solid #e5e7eb", borderRadius: "6px" }}>
                         {drive.company}
                       </span>
                     )}
                     <StatusBadge status={drive.status} />
                   </div>
 
-                  <div className="mt-2.5 flex flex-wrap items-center gap-4 text-[12.5px] text-slate-500">
-                    <span className="inline-flex items-center gap-1.5">
-                      <FiDollarSign size={13} className="text-slate-400" />
+                  <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "16px", marginTop: "10px", fontSize: "12.5px", color: "#6b7280" }}>
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                      <FiDollarSign size={13} style={{ color: "#9ca3af" }} />
                       {drive.packageLPA}
                     </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <FiMapPin size={13} className="text-slate-400" />
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                      <FiMapPin size={13} style={{ color: "#9ca3af" }} />
                       {drive.location}
                     </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <FiCalendar size={13} className="text-slate-400" />
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                      <FiCalendar size={13} style={{ color: "#9ca3af" }} />
                       {drive.date}
                     </span>
                   </div>
                 </div>
 
                 {/* Right: Stats + Progress */}
-                <div className="flex shrink-0 items-center gap-4">
-                  <div className="w-80">
+                <div style={{ display: "flex", alignItems: "center", gap: "16px", flexShrink: 0 }}>
+                  <div style={{ width: "320px" }}>
                     {/* Inline stats */}
-                    <div className="mb-2 flex items-center justify-between text-[12px]">
-                      <span className="font-semibold text-orange-600">
-                        {drive.candidates}{" "}
-                        <span className="font-normal text-slate-500">Candidates</span>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "8px", fontSize: "12px" }}>
+                      <span style={{ fontWeight: 700, color: "#ea580c" }}>
+                        {drive.candidates} <span style={{ fontWeight: 500, color: "#6b7280" }}>Candidates</span>
                       </span>
-                      <span className="font-semibold text-[#381c0f]">
-                        {drive.shortlisted}{" "}
-                        <span className="font-normal text-slate-500">Shortlisted</span>
+                      <span style={{ fontWeight: 700, color: "#381c0f" }}>
+                        {drive.shortlisted} <span style={{ fontWeight: 500, color: "#6b7280" }}>Shortlisted</span>
                       </span>
-                      <span className="font-semibold text-slate-600">
-                        {drive.interviews}{" "}
-                        <span className="font-normal text-slate-500">Interviews</span>
+                      <span style={{ fontWeight: 700, color: "#475569" }}>
+                        {drive.interviews} <span style={{ fontWeight: 500, color: "#6b7280" }}>Interviews</span>
                       </span>
                     </div>
 
                     {/* Progress bar */}
-                    <div className="h-2 w-full overflow-hidden rounded-full bg-orange-100">
+                    <div style={{ height: "8px", width: "100%", borderRadius: "9999px", background: "#ffedd5", overflow: "hidden" }}>
                       <div
-                        className="h-full rounded-full transition-all duration-500"
                         style={{
+                          height: "100%",
+                          borderRadius: "9999px",
+                          transition: "all 0.5s ease",
                           width: `${drive.progress}%`,
-                          background:
-                            drive.progress === 100
-                              ? "#381c0f"
-                              : "linear-gradient(90deg, #ea580c, #9a3412)",
+                          background: drive.progress === 100 ? "#381c0f" : "linear-gradient(90deg, #ea580c, #9a3412)",
                         }}
                       />
                     </div>
@@ -461,10 +582,10 @@ export default function CompanyPlacementDrives() {
 
             {/* Empty state */}
             {filteredDrives.length === 0 && (
-              <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 bg-white py-16 text-center">
-                <FiSearch size={32} className="mb-3 text-slate-300" />
-                <p className="text-sm font-semibold text-slate-500">No drives found</p>
-                <p className="mt-1 text-xs text-slate-400">
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "64px 20px", background: "white", border: "1px dashed #cbd5e1", borderRadius: "12px", textAlign: "center" }}>
+                <FiSearch size={32} style={{ color: "#cbd5e1", marginBottom: "12px" }} />
+                <p style={{ margin: 0, fontSize: "14px", fontWeight: 700, color: "#6b7280" }}>No drives found</p>
+                <p style={{ margin: "4px 0 0", fontSize: "12px", color: "#9ca3af" }}>
                   Try adjusting your search or filter criteria.
                 </p>
               </div>
@@ -472,16 +593,26 @@ export default function CompanyPlacementDrives() {
           </div>
 
           {/* Footer: Load More */}
-          <div className="flex justify-center pb-4 pt-2">
+          <div style={{ display: "flex", justifyContent: "center", padding: "16px 0 8px" }}>
             <button
               type="button"
-              className="group inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500 transition-colors hover:text-orange-600"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+                fontSize: "14px",
+                fontWeight: 700,
+                color: "#6b7280",
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+                transition: "color 0.15s ease"
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = "#ea580c"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = "#6b7280"; }}
             >
               Load More
-              <FiChevronDown
-                size={16}
-                className="transition-transform group-hover:translate-y-0.5"
-              />
+              <FiChevronDown size={16} />
             </button>
           </div>
         </div>

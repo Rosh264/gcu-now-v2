@@ -21,6 +21,8 @@ import StudentInterviewQueue from "../pages/student/InterviewQueue";
 import MockInterviews from "../pages/student/MockInterviews";
 import StudentPlacementResults from "../pages/student/Results";
 import StudentSettings from "../pages/student/Settings";
+import CompanyDashboard from "../pages/company/CompanyDashboard";
+import CompanyPlacementDrives from "../pages/company/PlacementDrives";
 
 export default function AppRouter() {
   return (
@@ -114,6 +116,14 @@ export default function AppRouter() {
         />
       </Route>
 
+      {/* Company HR Portal Routes */}
+      <Route path="/company" element={<Navigate to="/company/dashboard" replace />} />
+      <Route path="/company/dashboard" element={<CompanyDashboard />} />
+      <Route path="/company/drives" element={<CompanyPlacementDrives />} />
+      <Route path="/company/placement-drives" element={<Navigate to="/company/drives" replace />} />
+      <Route path="/company/candidates" element={<CompanyDashboard />} />
+      <Route path="/company/interviews" element={<CompanyDashboard />} />
+      <Route path="/company/profile" element={<CompanyDashboard />} />
     </Routes>
   );
 }
